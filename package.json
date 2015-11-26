@@ -1,0 +1,11 @@
+{
+  "name": "ktl",
+  "version": "0.0.1",
+  "description": "Koder Template Language",
+  "main": "ktl.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mariusz Chwalba <koder@cashbill.pl>",
+  "license": "ISC"
+}
