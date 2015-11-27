@@ -26,9 +26,6 @@ function escape(str) {
 }
 
 function ktl(template) {
-
-
-
     var body = "with(_ instanceof Object ? _ : {}) return '" +
             template
             .replace(/[^{}]+({{|$)/g,escape)
@@ -36,8 +33,6 @@ function ktl(template) {
             .replace(/\{\{([^#?][^}]*)\}\}/g, "'+(typeof($1)!='undefined'?$1:'')+'")   // parse {{ tag }}
                 
         + "';";
-        
-    //console.log("parser={",body,"}")
 
     try {
         var parser = new Function('_', "{ " + body + " }");
