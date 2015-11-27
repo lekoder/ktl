@@ -56,10 +56,10 @@ Hi {{ name }}! You have {{ messages.length }} new messages.
 Data:
 ```json
 {
-    name:'koder',
-    messages: [
-        { title: "message 1", from: "koder" },
-        { title: "message 2", from: "dekoder" }       
+    'name':'koder',
+    'messages': [
+        { 'title': "message 1", 'from': "koder" },
+        { 'title': "message 2", 'from': "dekoder" }       
     ]
 }   
 
