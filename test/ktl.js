@@ -66,6 +66,19 @@ describe("ktl", function () {
           );
     });
     
+    it("replaces {{_}} with verbatim string passed to parser", function() {
+        ktl("string:{{_}}")
+          ("some").should.be.equal(
+              "string:some"
+          );
+    });
+    it("replaces {{_}} with tostring number", function() {
+        ktl("number:{{_}}")
+          (123).should.be.equal(
+              "number:123"
+          );
+    });
+    
     
     
     it("iterates over {{# array }} / {{#}} tag", function() {

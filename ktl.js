@@ -7,17 +7,17 @@
 
 var ktl = function (template) {
 
-    var body = "{ with(_||{}) return '" + 
+    var body = "{ with(_ instanceof Object ? _ : {}) return '" + 
             template
                 .replace(/\\/g,'\\\\')                  // escape \
                 .replace(/'/g,"\\'")                    // escape '
                 .replace(/\n/g,"\\n")                   // escape \n
                 .replace(/\r/g,"\\r")                   // escape \r
                 
-                .replace(/\{\{[^#?]([^}]*)\}\}/g, "'+(typeof($1)!='undefined'?$1:'')+'")   // parse {{ tag }}
+                .replace(/\{\{([^#?]?[^}]*)\}\}/g, "'+(typeof($1)!='undefined'?$1:'')+'")   // parse {{ tag }}
                 
         + "'; }";
-        
+     
     try 
     {
         var parser = new Function('_', body);
