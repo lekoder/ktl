@@ -1,7 +1,7 @@
 {
   "name": "ktl",
   "version": "0.3.1",
-  "description": "Koder Template Language",
+  "description": "Koder's Template Language",
   "main": "ktl.js",
   "scripts": {
     "test": "mocha"

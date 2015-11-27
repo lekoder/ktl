@@ -1,4 +1,4 @@
-# Koder's Template System
+# Koder's Template Language
 
 ## KTL is a parser factory.
 
