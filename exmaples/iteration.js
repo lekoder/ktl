@@ -1,9 +1,9 @@
 var ktl = require('../ktl');
 
 var tpl = "Hi {{ name }}! You have {{ messages.length || 'no' }} new messages.\n"+
-          "{{# messages }}\n"+
+          "{{# messages }}"+
           "{{ title.toUpperCase() }}: from {{ from }}\n"+
-          "{{#}}";
+          "{{#}}\n";
 
 var parser = ktl(tpl);
 var data = {
