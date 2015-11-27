@@ -18,6 +18,10 @@ describe("ktl", function () {
         var template = "test 'string'";
         ktl(template)().should.be.equal(template);
     });
+    it("allows string literals in tags", function() {
+        var template = "test {{ 'str\ing' }}";
+        ktl(template)().should.be.equal("test string");
+    });
     
     it("allows \\ in template", function() {
         var template = "test \\ string \\";
@@ -78,7 +82,6 @@ describe("ktl", function () {
               "number:123"
           );
     });
-    
     it("iterates over {{# array }} / {{#}} tag", function() {
         var template = "array:{{# a }}v:{{ val }};{{#}}";
         var data = {a:[{val:1},{val:2}]};
@@ -105,6 +108,24 @@ describe("ktl", function () {
         var template = "{{#_}}{{#_}}{{_}}{{#}}{{#}}";
         var data = [[1,2],[3,4]];
         var expect = "1234";
+        ktl(template)(data).should.be.equal(expect);
+    });
+    it("allows to call methods", function() {
+        var template = "{{ string.toUpperCase() }}";
+        var data = { string: 'asd' };
+        var expect = "ASD";
+        ktl(template)(data).should.be.equal(expect);
+    });
+    it("allows to use operators", function() {
+        var template = "{{ a + b }}";
+        var data = { a:5, b:2 };
+        var expect = "7";
+        ktl(template)(data).should.be.equal(expect);
+    });
+    it("supports defaulting operator ||", function() {
+        var template = "{{ len || 'no' }}";
+        var data = { len:0 };
+        var expect = "no";
         ktl(template)(data).should.be.equal(expect);
     });
     it("supports nested iteration with missing values", function() {
