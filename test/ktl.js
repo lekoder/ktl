@@ -168,6 +168,10 @@ describe("ktl", function () {
         var data = [1,2,3,4,5,6,7];
         ktl(template)(data).should.be.equal('4567');
     })
-    it("supports tags in conditions")
+    it("supports tags in conditions", function() {
+        var template = "{{?more}}{{value}}{{?}}";
+        ktl(template)({more:true,value:'asd'}).should.be.equal("asd");
+        ktl(template)({more:false,value:'asd'}).should.be.equal("");
+    })
 
 });
