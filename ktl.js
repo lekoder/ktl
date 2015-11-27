@@ -41,7 +41,7 @@ function ktl(template) {
         + "';";
 
     try {
-        var parser = new Function('_', "{ " + body + " }");
+        var parser = new Function('_,$', "{ " + body + " }");
     }
     catch (e) {
         console.error("Could not compile template: " + e);

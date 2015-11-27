@@ -172,6 +172,10 @@ describe("ktl", function () {
         var template = "{{?more}}{{value}}{{?}}";
         ktl(template)({more:true,value:'asd'}).should.be.equal("asd");
         ktl(template)({more:false,value:'asd'}).should.be.equal("");
+    });
+    it("has access to index in array as $", function() {
+        ktl("{{#_}}{{$}}{{#}}")(['a','b','c']).should.be.equal("012");
     })
+    
 
 });

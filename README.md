@@ -37,7 +37,7 @@ objects (ie. Math), etc.
 ### Iteration
 Iteration starts with `{{# <array> }}` and ends with `{{#}}`. Iterations can be nested. String
 beteeen `{{# <array> }}` and `{{#}}` is treated as new template. Verbatim evaluation (`{{ _ }}`) is
-usefull for arrays of primitives.
+usefull for arrays of primitives. `$` is available as index inside iteration.
 
 |Tag                        | Meaning
 |---------------------------|--------------------------------------------------------------
