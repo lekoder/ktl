@@ -19,6 +19,31 @@ var data = { variable:'value' };
 var parsed = parsed(data);
 ```
 
+## Supported tags:
+### Evaluation
+All values support complete JavaScript notation. You can freely use operators, methods, global scope
+objects (ie. Math), etc.
+
+|Tag                        | Meaning
+|---------------------------|--------------------------------------------------------------
+|`{{ prop }}`               | Selected property of object passed to parser
+|`{{ prop.sub }}`           | Subproperties can be accessed with dot notation
+|`{{ method() }}`           | Methods can be called
+|`{{ value.toFixed(2) }}`   | Methods of properties can allso be called
+|`{{ prop ? prop : '-' }}`  | All operators are available (in this case: default to `'-'`)
+|`{{ _ }}`                  | Verbatim object passed to parser, cast to string. Usefull in iterations. 
+|`{{ _.toFixed(4) }}`       | Methods can also be called on verbatim objects
+
+### Iteration
+Iteration starts with `{{# <array> }}` and ends with `{{#}}`. Iterations can be nested. String
+beteeen `{{# <array> }}` and `{{#}}` is treated as new template. Verbatim evaluation (`{{ _ }}`) is
+usefull for arrays of primitives.
+
+|Tag                        | Meaning
+|---------------------------|--------------------------------------------------------------
+|`{{# array }}`             | Iterate over array passed as `{array:[]}` to parser
+|`{{# _ }}`                 | Verbatim iteration (wten passing `[]` to parser)
+
 ## Why KTL?
 
 Most templating languages are web-centric. I required a templating language which works on strings
