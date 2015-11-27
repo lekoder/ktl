@@ -18,10 +18,14 @@
   "dependencies": {},
   "repository": {
     "type": "git",
-    "url": "git@gitlab.cashbill.pl:tools/ktl.git"
+    "url": "git+https://github.com/lekoder/ktl.git"
   },
   "keywords": [
     "template",
     "parser"
-  ]
+  ],
+  "bugs": {
+    "url": "https://github.com/lekoder/ktl/issues"
+  },
+  "homepage": "https://github.com/lekoder/ktl#readme"
 }
