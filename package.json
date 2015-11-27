@@ -11,5 +11,17 @@
   "devDependencies": {
     "mocha": "^2.3.4",
     "should": "^7.1.1"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.cashbill.pl:tools/ktl.git"
+  },
+  "keywords": [
+    "template",
+    "parser"
+  ]
 }
