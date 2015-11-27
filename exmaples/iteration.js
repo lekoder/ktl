@@ -1,6 +1,6 @@
 var ktl = require('../ktl');
 
-var tpl = "Hi {{ name }}! You have {{ messages.length }} new messages.\n"+
+var tpl = "Hi {{ name }}! You have {{ messages.length || 'no' }} new messages.\n"+
           "{{# messages }}\n"+
           "{{ title.toUpperCase() }}: from {{ from }}\n"+
           "{{#}}";
@@ -15,4 +15,11 @@ var data = {
 };
 
 console.log(parser(data));
+
+var data2 = {
+    name:'dekoder',
+    messages: []
+};
+
+console.log(parser(data2));
 
