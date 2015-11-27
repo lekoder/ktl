@@ -24,14 +24,19 @@ describe("ktl", function () {
         ktl(template)().should.be.equal(template);
     });
     
-    it("allows newline", function() {
+    it("allows newline in template", function() {
         var template = "line\nline\nline";
         ktl(template)().should.be.equal(template);
     });
     
-    it("allows tab", function() {
+    it("allows tab in template", function() {
         var template = "tab\ttab\ttab\t";
         ktl(template)().should.be.equal(template);
-    })
+    });
+
+    it("allows \\r in template", function() {
+        var template = "r \r r \r r \r";
+        ktl(template)().should.be.equal(template);
+    });
 
 });

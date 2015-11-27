@@ -5,6 +5,7 @@ var ktl = function (template) {
                 .replace(/\\/g,'\\\\')
                 .replace(/'/g,"\\'")
                 .replace(/\n/g,"\\n")
+                .replace(/\r/g,"\\r")
         + "'; }";
     try {
         var parser = new Function('_', body);
