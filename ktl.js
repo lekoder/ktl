@@ -30,7 +30,8 @@ function ktl(template) {
 
 
     var body = "with(_ instanceof Object ? _ : {}) return '" +
-        escape(template)
+            template
+            .replace(/[^{}]+({{|$)/g,escape)
             .replace(/\{\{\#([^}]+)\}\}(.*)\{\{#\}\}/g, makeIterator) // create a iterator    
             .replace(/\{\{([^#?][^}]*)\}\}/g, "'+(typeof($1)!='undefined'?$1:'')+'")   // parse {{ tag }}
                 
