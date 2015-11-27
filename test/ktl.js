@@ -72,7 +72,7 @@ describe("ktl", function () {
               "string:some"
           );
     });
-    it("replaces {{_}} with tostring number", function() {
+    it("replaces {{_}} with toString of a number", function() {
         ktl("number:{{_}}")
           (123).should.be.equal(
               "number:123"
@@ -83,7 +83,7 @@ describe("ktl", function () {
     
     it("iterates over {{# array }} / {{#}} tag", function() {
         var template = "array:{{# a }}v:{{ val }};{{#}}";
-        var data = [{val:1},{val:2}];
+        var data = {a:[{val:1},{val:2}]};
         var expect = "array:v:1;v:2;";
         
         ktl(template)(data).should.be.equal(expect);

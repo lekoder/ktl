@@ -2,28 +2,35 @@
  * KLT uses tags:
  * 
  * {{ var }} - variable
- * {{# array }} {{ val }} {{#}} - array/object iteration
+ * {{# array }} {{ val }} {{#}} - array iteration
  */
 
-var ktl = function (template) {
+function ktl(template) {
 
-    var body = "{ with(_ instanceof Object ? _ : {}) return '" + 
-            template
-                .replace(/\\/g,'\\\\')                  // escape \
-                .replace(/'/g,"\\'")                    // escape '
-                .replace(/\n/g,"\\n")                   // escape \n
-                .replace(/\r/g,"\\r")                   // escape \r
-                
-                .replace(/\{\{([^#?]?[^}]*)\}\}/g, "'+(typeof($1)!='undefined'?$1:'')+'")   // parse {{ tag }}
-                
-        + "'; }";
-     
-    try 
-    {
-        var parser = new Function('_', body);
+    function makeIterator(tag, iterateOver, withTempate) {
+        var parser = ktl(withTempate);
+        return "'+(" + iterateOver + ".map(" + parser.toString() + ").join(''))+'";
     }
-    catch (e) 
-    {
+
+    var body = "with(_ instanceof Object ? _ : {}) return '" +
+        template
+            .replace(/\\/g, '\\\\')                  // escape \
+            .replace(/'/g, "\\'")                    // escape '
+            .replace(/\n/g, "\\n")                   // escape \n
+            .replace(/\r/g, "\\r")                   // escape \r
+            
+            .replace(/\{\{\#([^}]+)\}\}(.*)\{\{#\}\}/g, makeIterator) // create a iterator
+                
+            .replace(/\{\{([^#?][^}]*)\}\}/g, "'+(typeof($1)!='undefined'?$1:'')+'")   // parse {{ tag }}
+                
+        + "';";
+
+    try {
+        var parser = new Function('_', "{ " +
+            body +
+            " }");
+    }
+    catch (e) {
         console.err("Could not compile template: " + e);
     }
 
