@@ -79,8 +79,6 @@ describe("ktl", function () {
           );
     });
     
-    
-    
     it("iterates over {{# array }} / {{#}} tag", function() {
         var template = "array:{{# a }}v:{{ val }};{{#}}";
         var data = {a:[{val:1},{val:2}]};
@@ -89,5 +87,45 @@ describe("ktl", function () {
         ktl(template)(data).should.be.equal(expect);
     });
     
+    it("supports verbatim array iteration", function() {
+        var template = "array:{{#_}}{{_}}{{#}}";
+        var data = [1,2,3,4];
+        var expect = "array:1234";
+        ktl(template)(data).should.be.equal(expect);
+    })
+    
+    it("supports iteration over empty array", function() {
+        var template = "empty:{{#_}}{{_}}{{#}}";
+        var data = [];
+        var expect = "empty:";
+        ktl(template)(data).should.be.equal(expect);
+    });
+    
+    it("supports nested iteration", function() {
+        var template = "{{#_}}{{#_}}{{_}}{{#}}{{#}}";
+        var data = [[1,2],[3,4]];
+        var expect = "1234";
+        ktl(template)(data).should.be.equal(expect);
+    });
+    it("supports nested iteration with missing values", function() {
+        var template = "{{#_}}{{#_}}{{_}}{{#}}{{#}}";
+        var data = [[1,2],'123',[3,4]];
+        var expect = "1234";
+        ktl(template)(data).should.be.equal(expect);
+    });
+    it("treats non-arrays as empty arrays when iterating", function() {
+        var template = "empty:{{#_}}{{_}}{{#}}";
+        var data = "test";
+        var expect = "empty:";
+        ktl(template)(data).should.be.equal(expect);
+    });
+    it("allows multi-line iteration", function() {
+        var template = "{{#_}}"+
+                       "value:{{_}}\n"+
+                       "{{#}}";
+        var data = ['foo','bar'];
+        var expect = "value:foo\nvalue:bar\n";
+        ktl(template)(data).should.be.equal(expect);
+    });
 
 });
