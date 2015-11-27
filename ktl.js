@@ -4,7 +4,12 @@
  * {{ var }} - property of passed object
  * {{ _ }}   - verbatim passed object
  * {{# array }} {{ _ }} {{#}} - array iteration
+ * {{? condition}} data {{?}} - conditional
  */
+
+function makeCondition(tag, arg, content) {
+    return "'+("+arg+"?'"+content+"':'')+'";
+}
 
 function makeIterator(tag, iterateOver, withTempate) {
     var parser = ktl(withTempate);
@@ -29,7 +34,8 @@ function ktl(template) {
     var body = "with(_ instanceof Object ? _ : {}) return '" +
             template
             .replace(/[^{}]+({{|$)/g,escape)
-            .replace(/\{\{\#([^}]+)\}\}(.*)\{\{#\}\}/g, makeIterator) // create a iterator    
+            .replace(/\{\{\#([^}]+)\}\}(.*)\{\{\#\}\}/g, makeIterator) // create a iterator {{# }}    
+            .replace(/\{\{\?([^}]+)\}\}(.*)\{\{\?\}\}/g, makeCondition) // create a condition {{? }}
             .replace(/\{\{([^#?][^}]*)\}\}/g, "'+(typeof($1)!='undefined'?$1:'')+'")   // parse {{ tag }}
                 
         + "';";

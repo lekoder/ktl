@@ -148,5 +148,26 @@ describe("ktl", function () {
         var expect = "value:foo\nvalue:bar\n";
         ktl(template)(data).should.be.equal(expect);
     });
+    it("has conditionals", function() {
+       
+        ktl("empty:{{?_}}has data{{?}}")(false).should.be.equal("empty:");
+        ktl("empty:{{?_}}has data{{?}}")(true).should.be.equal("empty:has data");
+        
+    });
+    it("suppots operators in conditions", function() {
+       ktl("more:{{?_>3}}yes{{?}}")(5).should.be.equal("more:yes");
+       ktl("more:{{?_>3}}yes{{?}}")(2).should.be.equal("more:"); 
+    });
+    it("supports multiline conditions", function() {
+        var template = "data:\n{{?_}}has data\n{{?}}";
+        ktl(template)(true).should.be.equal("data:\nhas data\n");
+        ktl(template)(false).should.be.equal("data:\n");
+    });
+    it("supports conditions in iterators", function() {
+        var template = "{{#_}}{{?_>3}}{{_}}{{?}}{{#}}";
+        var data = [1,2,3,4,5,6,7];
+        ktl(template)(data).should.be.equal('4567');
+    })
+    it("supports tags in conditions")
 
 });
