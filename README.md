@@ -29,7 +29,7 @@ objects (ie. Math), etc.
 |`{{ prop }}`               | Selected property of object passed to parser
 |`{{ prop.sub }}`           | Subproperties can be accessed with dot notation
 |`{{ method() }}`           | Methods can be called
-|`{{ value.toFixed(2) }}`   | Methods of properties can allso be called
+|`{{ value.toFixed(2) }}`   | Methods of properties can also be called
 |`{{ prop ? prop : '-' }}`  | All operators are available (in this case: default to `'-'`)
 |`{{ _ }}`                  | Verbatim object passed to parser, cast to string. Usefull in iterations. 
 |`{{ _.toFixed(4) }}`       | Methods can also be called on verbatim objects
@@ -48,7 +48,7 @@ usefull for arrays of primitives. `$` is available as index inside iteration.
 
 Template:
 ```ktl
-Hi {{ name }}! You have {{ messages.length }} new messages.
+Hi {{ name }}! You have {{ messages.length || 'no' }} new messages.
 {{# messages }}
     {{ title.toUppercase() }}: from {{ from }}
 {{#}} 
@@ -86,6 +86,12 @@ without assuming what those strings will be used for.
 * It returns verbatim string if there is no data.
 * Template caching is out of it's scope. You can cache parsers if you like.
 * Escaping string is also out of it's scope. 
+
+### How does it work?
+
+Ktl works by parsing supplied template to a function, which can be called with an object to return
+parsed string. This is one of fastest methods of templating and allows pre-parsing of templates at
+compile time. You can easly save parsers by calling `.toString()` on generated function. 
 
 ## Alternatives
 
