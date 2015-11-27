@@ -4,8 +4,12 @@
   "description": "Koder Template Language",
   "main": "ktl.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "author": "Mariusz Chwalba <koder@cashbill.pl>",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^2.3.4",
+    "should": "^7.1.1"
+  }
 }
