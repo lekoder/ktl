@@ -38,7 +38,8 @@ function ktl(template) {
             " }");
     }
     catch (e) {
-        console.err("Could not compile template: " + e);
+        console.error("Could not compile template: " + e);
+        console.trace( body );
     }
 
     return parser;

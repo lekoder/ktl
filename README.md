@@ -42,7 +42,36 @@ usefull for arrays of primitives.
 |Tag                        | Meaning
 |---------------------------|--------------------------------------------------------------
 |`{{# array }}`             | Iterate over array passed as `{array:[]}` to parser
-|`{{# _ }}`                 | Verbatim iteration (wten passing `[]` to parser)
+|`{{# _ }}`                 | Verbatim iteration (when passing `[]` to parser)
+
+## Examples:
+
+Template:
+```ktl
+Hi {{ name }}! You have {{ messages.length }} new messages.
+{{# messages }}
+    {{ title.toUppercase() }}: from {{ from }}
+{{#}} 
+```
+Data:
+```json
+{
+    name:'koder',
+    messages: [
+        { title: "message 1", from: "koder" },
+        { title: "message 2", from: "dekoder" }       
+    ]
+}   
+
+```
+Output
+```
+Hi koder! You have 2 new messages.
+
+MESSAGE 1: from koder
+
+MESSAGE 2: from dekoder
+```
 
 ## Why KTL?
 
