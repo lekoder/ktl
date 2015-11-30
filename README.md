@@ -10,12 +10,7 @@ It should be augunmented with HTML escaper when using on web. Escaping is not im
 
 ## Usage
 ```javascript
-var ktl = require('ktl');
-var template = 'some template {{ variable }}';
-var parser = ktl(template);
-
-var data = { variable:'value' };
-var output = parser(data);
+var output = ktl(template)(data);
 ```
 
 ## Supported tags:
