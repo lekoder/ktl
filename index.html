@@ -47,8 +47,20 @@
 <ul>
 <li>Fast.</li>
 <li>No dependencies.</li>
-<li>Does not assume what template will be used for.</li>
+<li>Does not assume what template will be used for.
+## Syntax</li>
 </ul>
+
+<pre lang="ktl"><code>{{ property }}
+
+{{# array }}
+  index: {{$}}, value: {{_}}
+{{#}}
+
+{{? condition }}
+  it is true
+{{?}}
+</code></pre>
       </section>
     </div>
 
@@ -60,7 +72,17 @@
       </footer>
     </div>
 
-    
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-39617747-6");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
 
   </body>
 </html>
