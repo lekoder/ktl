@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 # Koder's Template Language
-
 ## KTL is a parser factory.
 
 String templating system inspired by [doT](https://github.com/olado/doT/). It pases template
