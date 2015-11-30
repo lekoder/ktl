@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Koder's Template Language
 
 ## KTL is a parser factory.
@@ -48,7 +49,7 @@ usefull for arrays of primitives. `$` is available as index inside iteration.
 
 Template:
 ```ktl
-Hi {{ name }}! You have {{ messages.length }} new messages.
+Hi {{ name }}! You have {{ messages.length || 'no' }} new messages.
 {{# messages }}
     {{ title.toUppercase() }}: from {{ from }}
 {{#}} 
@@ -56,10 +57,10 @@ Hi {{ name }}! You have {{ messages.length }} new messages.
 Data:
 ```json
 {
-    name:'koder',
-    messages: [
-        { title: "message 1", from: "koder" },
-        { title: "message 2", from: "dekoder" }       
+    "name":"koder",
+    "messages": [
+        { "title": "message 1", "from": "koder" },
+        { "title": "message 2", "from": "dekoder" }       
     ]
 }   
 
