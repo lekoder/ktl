@@ -16,7 +16,7 @@ var template = 'some template {{ variable }}';
 var parser = ktl(template);
 
 var data = { variable:'value' };
-var parsed = parsed(data);
+var output = parser(data);
 ```
 
 ## Supported tags:
