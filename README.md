@@ -1,12 +1,12 @@
 # Koder's Template Language
 ## KTL is a parser factory.
 
-String templating system inspired by [doT](https://github.com/olado/doT/). It pases template
+String templating system inspired by [doT](https://github.com/olado/doT/). It parses template
 string into javascript function, which in turn can be called with data to return parsed string.
 
-It returns verbatim string (no escaping, etc) makin it usefull for generation of configuration files.
+It returns verbatim string (no escaping, etc) makin it useful for generation of configuration files.
 
-It should be augunmented with HTML escaper when using on web. Escaping is not implemented by design. 
+It should be augumented with HTML escaper when using on web. Escaping is not implemented by design. 
 
 ## Usage
 ```javascript
@@ -30,7 +30,7 @@ objects (ie. Math), etc.
 
 ### Iteration
 Iteration starts with `{{# <array> }}` and ends with `{{#}}`. Iterations can be nested. String
-beteeen `{{# <array> }}` and `{{#}}` is treated as new template. Verbatim evaluation (`{{ _ }}`) is
+between `{{# <array> }}` and `{{#}}` is treated as new template. Verbatim evaluation (`{{ _ }}`) is
 usefull for arrays of primitives. `$` is available as index inside iteration.
 
 |Tag                        | Meaning
@@ -83,9 +83,9 @@ without assuming what those strings will be used for.
 
 ## Alternatives
 
-* [doT](https://github.com/olado/doT/) is an excelent templating language with blazing-fast
+* [doT](https://github.com/olado/doT/) is an excellent templating language with blazing-fast
 implementation and it was inspiration to write KTL. It is however www-centric and `it` notation
-is not that usefull.
+is not that useful.
 
-* [mustache](https://mustache.github.io/) is another briliant templating language, but it still
+* [mustache](https://mustache.github.io/) is another brilliant templating language, but it still
 requires specific `{{{ tag }}}` to avoid escaping.
