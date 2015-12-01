@@ -8,7 +8,7 @@
  */
 
 function makeCondition(tag, arg, content) {
-    return "\"+(typeof("+arg+")!==\"undefined\"&&"+arg+"?(\""+content+"\"):\"\")+\"";
+    return "\"+(function() { try { return("+arg+"?(\""+content+"\"):\"\"); } catch(e){ return ''} } )()+\"";
 }
 
 function makeIterator(tag, iterateOver, withTempate) {

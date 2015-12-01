@@ -188,10 +188,16 @@ describe("ktl", function () {
     it("has access to index in array as $", function() {
         ktl("{{#_}}{{$}}{{#}}")(['a','b','c']).should.be.equal("012");
     })
-    it("should allow for every character inside iterator", function() {
+    it("allows any character inside iterator", function() {
         var template = "{{#list}}'\"\\{{_}}{{#}}";
         ktl(template)({list:[1,2,3,4]}).should.be.equal("'\"\\1'\"\\2'\"\\3'\"\\4");
     })
+    it("undefined is treated as false in conditionals", function() {
+       
+        ktl("empty:{{?a==true}}has data{{?}}")({}).should.be.equal("empty:");
+        
+        
+    });
     
 
 });
