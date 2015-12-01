@@ -176,6 +176,10 @@ describe("ktl", function () {
     it("has access to index in array as $", function() {
         ktl("{{#_}}{{$}}{{#}}")(['a','b','c']).should.be.equal("012");
     })
+    it("should allow for every character inside iterator", function() {
+        var template = "{{#list}}'\"\\{{_}}{{#}}";
+        ktl(template)({list:[1,2,3,4]}).should.be.equal("'\"\\1'\"\\2'\"\\3'\"\\4");
+    })
     
 
 });
