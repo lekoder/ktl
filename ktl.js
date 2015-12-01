@@ -31,8 +31,8 @@ function ktl(template) {
     var body = "with(_ instanceof Object ? _ : {}) return \"" +
             template
             .replace(/[^{}]+({{|$)/g,escape)
-            .replace(/\{\{\#([^}]+)\}\}(.*)\{\{\#\}\}/gm, makeIterator) // create a iterator {{# }}    
-            .replace(/\{\{\?([^}]+)\}\}(.*)\{\{\?\}\}/gm, makeCondition) // create a condition {{? }}
+            .replace(/\{\{\#([^}]+)\}\}([\s\S]*)\{\{\#\}\}/gm, makeIterator) // create a iterator {{# }}    
+            .replace(/\{\{\?([^}]+)\}\}([\s\S]*?)\{\{\?\}\}/gm, makeCondition) // create a condition {{? }}
             .replace(/\{\{([^#?][^}]*)\}\}/g, "\"+(typeof($1)!=\"undefined\"?$1:\"\")+\"")   // parse {{ tag }}
                 
         + "\";";

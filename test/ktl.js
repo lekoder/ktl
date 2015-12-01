@@ -202,6 +202,7 @@ describe("ktl", function () {
         var expected = fs.readFileSync("test/real/t1.out").toString();
         var data = JSON.parse(fs.readFileSync("test/real/t1.json").toString() );
         
-        ktl(template)(data).should.be.equal(expected);
+        var out = ktl(template)(data);
+        out.should.be.equal(expected);
     });
 });

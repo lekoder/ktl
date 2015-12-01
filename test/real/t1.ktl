@@ -1,6 +1,6 @@
 Hello {{name}}!
-   
-{{?colors && colors.length }} 
+
+{{?colors && colors.length }}
 <ul>
     {{#colors}}
     <li class="color">{{_}}</li>
