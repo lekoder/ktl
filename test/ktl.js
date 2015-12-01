@@ -173,6 +173,11 @@ describe("ktl", function () {
         ktl(template)({more:true,value:'asd'}).should.be.equal("asd");
         ktl(template)({more:false,value:'asd'}).should.be.equal("");
     });
+    it("supports undefined conditions", function() {
+        var template = "{{?more}}{{?}}";
+        ktl(template)({}).should.be.equal("");
+    });
+
     it("has access to index in array as $", function() {
         ktl("{{#_}}{{$}}{{#}}")(['a','b','c']).should.be.equal("012");
     })

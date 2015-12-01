@@ -8,7 +8,7 @@
  */
 
 function makeCondition(tag, arg, content) {
-    return "\"+("+arg+"?(\""+content+"\"):\"\")+\"";
+    return "\"+(typeof("+arg+")!==\"undefined\"&&"+arg+"?(\""+content+"\"):\"\")+\"";
 }
 
 function makeIterator(tag, iterateOver, withTempate) {
