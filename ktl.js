@@ -14,6 +14,7 @@ function makeCondition(tag, arg, content) {
 function makeIterator(tag, iterateOver, withTempate) {
     var parser = ktl(JSON.parse("\""+withTempate+"\"")); // template is already escaped
     return "\"+("
+        + "typeof("+iterateOver+")!==\"undefined\" &&"
         + iterateOver + ".map && "    // iterate only over arrays
         + iterateOver + ".map("
         + parser.toString()             // parser for subtemplate
