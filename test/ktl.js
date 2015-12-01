@@ -140,6 +140,13 @@ describe("ktl", function () {
         var expect = "empty:";
         ktl(template)(data).should.be.equal(expect);
     });
+    it("allows null iteration over unexisting property", function() {
+        var template = "empty:{{#list}}{{_}}{{#}}";
+        var data = {};
+        var expect = "empty:";
+        ktl(template)(data).should.be.equal(expect);
+    });
+
     it("allows multi-line iteration", function() {
         var template = "{{#_}}"+
                        "value:{{_}}\n"+
