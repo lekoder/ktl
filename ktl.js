@@ -12,14 +12,13 @@ var nestingTokens = {
     '#': function (tokens) {
         // build an iteration
         var array = tokens[0].substring(1);
-        return array + ".map(function(_,$){ try{ " + build(tokens.splice(1)) + "  } catch(e) { return \"\"}  } ).join(\"\")";
+        return "( function() { try{ return "+ array + ".map(function(_,$){ try{ " + build(tokens.splice(1)) + "  } catch(e) { return \"\"}  } ).join(\"\") } catch(e){ return \"\"; } })()";
 
     },
     '?': function (tokens) {
         // build an condition
-        console.log("condition",tokens);
         var condition = tokens[0].substring(1);
-        return condition + "? (function() { "+build(tokens.splice(1))+" })() : \"\"";
+        return "(function() { try { if ("+condition+")"+build(tokens.splice(1))+";} catch(e){}; return \"\"  }  )()";
     }
 }
 
@@ -55,7 +54,7 @@ function build(tokens) {
                     }
                     body.push("(" + nesting(tokens.slice(idx + 1, ahead)) + ")");
 
-                    idx = ahead;
+                    idx = ahead-1;
                 }
                 else {
                     throw new SyntaxError("Unexpeced closing tag: " + token);
@@ -69,7 +68,6 @@ function build(tokens) {
 
 
     var source = "{ with(_||{}) { return " + body.join("+") + "; } }";
-    console.log(source);
     return source;
 }
 
@@ -79,7 +77,6 @@ function compile(tokens) {
 
 function ktl(template) {
 
-    console.log(template);
     try {
         return compile(template.split(detlimer));
     }
