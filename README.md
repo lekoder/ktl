@@ -26,7 +26,7 @@ objects (ie. Math), etc.
 |`{{ method() }}`           | Methods can be called
 |`{{ value.toFixed(2) }}`   | Methods of properties can allso be called
 |`{{ prop ? prop : '-' }}`  | All operators are available (in this case: default to `'-'`)
-|`{{ _ }}`                  | Verbatim object passed to parser, cast to string. Usefull in iterations. 
+|`{{ _ }}`                  | Verbatim object passed to parser, cast to string. Useful in iterations. 
 |`{{ _.toFixed(4) }}`       | Methods can also be called on verbatim objects
 
 ### Iteration
