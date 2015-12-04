@@ -1,6 +1,6 @@
 {
   "name": "ktl",
-  "version": "0.4.11",
+  "version": "0.5.0",
   "description": "Koder's Template Language",
   "main": "ktl.js",
   "scripts": {
