@@ -7,7 +7,7 @@ string into javascript function, which in turn can be called with data to return
 
 It returns verbatim string (no escaping, etc) makin it useful for generation of configuration files.
 
-It should be augumented with HTML escaper when using on web. Escaping is not implemented by design. 
+It should be augmented with HTML escaper when using on web. Escaping is not implemented by design. 
 
 ## Usage
 ```javascript
@@ -24,7 +24,7 @@ objects (ie. Math), etc.
 |`{{ prop }}`               | Selected property of object passed to parser
 |`{{ prop.sub }}`           | Subproperties can be accessed with dot notation
 |`{{ method() }}`           | Methods can be called
-|`{{ value.toFixed(2) }}`   | Methods of properties can allso be called
+|`{{ value.toFixed(2) }}`   | Methods of properties can also be called
 |`{{ prop ? prop : '-' }}`  | All operators are available (in this case: default to `'-'`)
 |`{{ _ }}`                  | Verbatim object passed to parser, cast to string. Useful in iterations. 
 |`{{ _.toFixed(4) }}`       | Methods can also be called on verbatim objects
@@ -32,7 +32,7 @@ objects (ie. Math), etc.
 ### Iteration
 Iteration starts with `{{# <array> }}` and ends with `{{#}}`. Iterations can be nested. String
 between `{{# <array> }}` and `{{#}}` is treated as new template. Verbatim evaluation (`{{ _ }}`) is
-usefull for arrays of primitives. `$` is available as index inside iteration.
+useful for arrays of primitives. `$` is available as index inside iteration.
 
 |Tag                        | Meaning
 |---------------------------|--------------------------------------------------------------
@@ -40,7 +40,7 @@ usefull for arrays of primitives. `$` is available as index inside iteration.
 |`{{# _ }}`                 | Verbatim iteration (when passing `[]` to parser)
 
 ### Condition
-Condition starts with `{{? cond }}` and ends with `{{?}}` with an optional else `{{:}}`.
+Condition starts with `{{? condition }}` and ends with `{{?}}` with an optional else `{{:}}`.
 
 |Tag                                  | Meaning
 |-------------------------------------|--------------------------------------------------------------
