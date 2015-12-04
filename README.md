@@ -39,6 +39,14 @@ usefull for arrays of primitives. `$` is available as index inside iteration.
 |`{{# array }}`             | Iterate over array passed as `{array:[]}` to parser
 |`{{# _ }}`                 | Verbatim iteration (when passing `[]` to parser)
 
+### Condition
+Condition starts with `{{? cond }}` and ends with `{{?}}` with an optional else `{{:}}`.
+
+|Tag                                  | Meaning
+|-------------------------------------|--------------------------------------------------------------
+|`{{? bool }} true {{?}}`             | Simple condition
+|`{{? bool }} true {{:}} false {{?}}` | Condition with else
+
 ## Examples:
 
 Template:
