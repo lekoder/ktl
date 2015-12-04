@@ -18,7 +18,15 @@ var nestingTokens = {
     '?': function (tokens) {
         // build an condition
         var condition = tokens[0].substring(1);
-        return "(function() { try { if ("+condition+")"+build(tokens.splice(1))+";} catch(e){}; return \"\"  }  )()";
+        var elsePos = tokens.indexOf(':');
+        if ( elsePos == -1 ) {
+            return "(function() { try { if ("+condition+")"+build(tokens.splice(1))+";} catch(e){}; return \"\"  }  )()";
+        } else {
+            return "(function() { try { if ("+condition+")" + 
+                build(tokens.splice(1,elsePos-1))+" else "+ 
+                build(tokens.splice(elsePos)) +
+                ";} catch(e){}; return \"\"  }  )()";
+        }
     }
 }
 
@@ -65,7 +73,6 @@ function build(tokens) {
             }
         }
     }
-
 
     var source = "{ with(_||{}) { return " + body.join("+") + "; } }";
     return source;

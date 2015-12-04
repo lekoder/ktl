@@ -166,6 +166,12 @@ describe("ktl", function () {
         ktl("more:{{?_>3}}yes{{?}}")(5).should.be.equal("more:yes");
         ktl("more:{{?_>3}}yes{{?}}")(2).should.be.equal("more:");
     });
+    it("has else conditional", function() {
+        ktl("bool:{{?_}}true{{:}}false{{?}}")(true).should.be.equal("bool:true");
+        ktl("bool:{{?_}}true{{:}}false{{?}}")(false).should.be.equal("bool:false");
+    })
+    
+    
     it("supports multiline conditions", function () {
         var template = "data:\n{{?_}}has data\n{{?}}";
         ktl(template)(true).should.be.equal("data:\nhas data\n");
