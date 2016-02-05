@@ -212,7 +212,12 @@ describe("ktl", function () {
         out.should.be.equal(expected);
     });
     it("throws exception on error in template - unmatched {{?}}", function() {
-       var template = "{{?}}unterminated condition";
-       (function() { return ktl(template) }).should.throw();
+       (function templateWithUnterminatedCondition() { return ktl("{{?}}unterminated condition") }).should.throw(SyntaxError);
+    });
+    it("throws exception on error in template - unmatched {{#}}", function() {
+       (function tempalteWithUnterminatedIteration() { return ktl("{{#}}unterminated iteration") }).should.throw(SyntaxError);
+    });
+    it("throws exception on error in template - gibberish in tag", function() {
+       (function tempalteWithGibberish() { return ktl("{{=!?}}gibberish") }).should.throw(SyntaxError);
     });
 });
