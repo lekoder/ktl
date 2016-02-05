@@ -83,13 +83,7 @@ function compile(tokens) {
 }
 
 function ktl(template) {
-
-    try {
-        return compile(template.split(detlimer));
-    }
-    catch (e) {
-        console.error("Could not compile template: " + e);
-    }
+    return compile(template.split(detlimer));
 }
 
 module.exports = ktl;

@@ -211,4 +211,8 @@ describe("ktl", function () {
         var out = ktl(template)(data);
         out.should.be.equal(expected);
     });
+    it("throws exception on error in template - unmatched {{?}}", function() {
+       var template = "{{?}}unterminated condition";
+       (function() { return ktl(template) }).should.throw();
+    });
 });
