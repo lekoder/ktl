@@ -4,6 +4,7 @@
  * {{ var }} - property of passed object
  * {{ _ }}   - verbatim passed object
  * {{# array }} {{ _ }} {{#}} - array iteration
+ * {{ $ }} - index in array
  * {{? condition}} data {{?}} - conditional
  */
 
