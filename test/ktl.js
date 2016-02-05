@@ -214,10 +214,20 @@ describe("ktl", function () {
     it("throws exception on error in template - unmatched {{?}}", function() {
        (function templateWithUnterminatedCondition() { return ktl("{{?}}unterminated condition") }).should.throw(SyntaxError);
     });
+    it("throws exception on error in template - not closed {{?}}", function() {
+       (function templateWithUnterminatedCondition() { return ktl("{{? val }}unterminated condition") }).should.throw(SyntaxError);
+    });
     it("throws exception on error in template - unmatched {{#}}", function() {
        (function tempalteWithUnterminatedIteration() { return ktl("{{#}}unterminated iteration") }).should.throw(SyntaxError);
     });
+    it("throws exception on error in template - not closed {{#}}", function() {
+       (function tempalteWithUnterminatedIteration() { return ktl("{{# arr }}unterminated iteration") }).should.throw(SyntaxError);
+    });
     it("throws exception on error in template - gibberish in tag", function() {
        (function tempalteWithGibberish() { return ktl("{{=!?}}gibberish") }).should.throw(SyntaxError);
+    });
+    it("error message contains line number", function() {
+       (function tempalteWithErrorOnLine1() { return ktl("{{?}}") }).should.throw(/line 1/);
+       (function tempalteWithErrorOnLine4() { return ktl("1\n2\n3\n{{?}}") }).should.throw(/line 4/);
     });
 });

@@ -34,6 +34,12 @@ var nestingTokens = {
 function build(tokens) {
     var body = [];
     var idx;
+    
+    function assessErrorPosition() {
+        return "on line "+(tokens.filter(function(k,i) {
+            return i<=idx
+        }).join('').split('\n').length);
+    }
 
     for (idx = 0; idx < tokens.length; idx += 2) {
         body.push(JSON.stringify(tokens[idx]));
@@ -59,14 +65,14 @@ function build(tokens) {
                         }
                     } while (depth > 0);
                     if (depth > 0) {
-                        throw new SyntaxError("Missing closing " + nestor);
+                        throw new SyntaxError("Missing closing " + nestor + " " + assessErrorPosition());
                     }
                     body.push("(" + nesting(tokens.slice(idx + 1, ahead)) + ")");
 
                     idx = ahead-1;
                 }
                 else {
-                    throw new SyntaxError("Unexpeced closing tag: " + token);
+                    throw new SyntaxError("Unexpeced closing tag: " + token + " "+ assessErrorPosition());
                 }
             }
             else {
