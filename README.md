@@ -1,5 +1,6 @@
 # Koder's Template Language
 [![Build Status](https://travis-ci.org/lekoder/ktl.svg?branch=master)](https://travis-ci.org/lekoder/ktl)
+[![Coverage Status](https://coveralls.io/repos/github/lekoder/ktl/badge.svg?branch=master)](https://coveralls.io/github/lekoder/ktl?branch=master)
 ## KTL is a parser factory.
 
 String templating system inspired by [doT](https://github.com/olado/doT/). It parses template
