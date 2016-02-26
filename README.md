@@ -1,4 +1,6 @@
 # Koder's Template Language
+
+[![Join the chat at https://gitter.im/lekoder/ktl](https://badges.gitter.im/lekoder/ktl.svg)](https://gitter.im/lekoder/ktl?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/lekoder/ktl.svg?branch=master)](https://travis-ci.org/lekoder/ktl)
 [![Coverage Status](https://coveralls.io/repos/github/lekoder/ktl/badge.svg?branch=master)](https://coveralls.io/github/lekoder/ktl?branch=master)
 ## KTL is a parser factory.
