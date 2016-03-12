@@ -76,17 +76,17 @@ function build(tokens) {
                 }
             }
             else {
-                body.push("(typeof(" + token + ")!==\"undefined\"?" + token + ":\"\")");
+                body.push("(typeof(" + token + ")!==\"undefined\"?$$(" + token + "):\"\")");
             }
         }
     }
 
-    var source = "{ with(_||{}) { return " + body.join("+") + "; } }";
+    var source = "{ $$=($ instanceof Function ? $ : $$)||function(a){return a;}; with(_||{}) { return " + body.join("+") + "; } }";
     return source;
 }
 
 function compile(tokens) {
-    return new Function("_,$", build(tokens));
+    return new Function("_,$,$$", build(tokens));
 }
 
 function ktl(template) {

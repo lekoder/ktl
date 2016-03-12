@@ -18,7 +18,7 @@ It should be augmented with HTML escaper when using on web. Escaping is not impl
 
 ## Usage
 ```javascript
-var output = ktl(template)(data);
+var output = ktl(template)(data,[sanitizer]);
 ```
 
 ## Supported tags:
@@ -53,6 +53,13 @@ Condition starts with `{{? condition }}` and ends with `{{?}}` with an optional 
 |-------------------------------------|--------------------------------------------------------------
 |`{{? bool }} true {{?}}`             | Simple condition
 |`{{? bool }} true {{:}} false {{?}}` | Condition with else
+
+## Sanitizing output
+
+If parser built with KTL is called with function as last argument, it will use this function to sanitize
+all evaluations. Sanitizer is a function that takes a data value and returns sanitized string.
+
+This feature can be used to use KTL as HTML parser.
 
 ## Examples:
 

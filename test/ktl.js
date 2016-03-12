@@ -1,6 +1,9 @@
 var should = require("should"),
     fs = require("fs"),
-    ktl = require('../ktl');
+    ktl = require("../ktl"),
+    sinon = require("sinon");
+    
+require("should-sinon");
 
 describe("ktl", function () {
 
@@ -230,4 +233,43 @@ describe("ktl", function () {
        (function tempalteWithErrorOnLine1() { return ktl("{{?}}") }).should.throw(/line 1/);
        (function tempalteWithErrorOnLine4() { return ktl("1\n2\n3\n{{?}}") }).should.throw(/line 4/);
     });
+    it("calls sanitizer on each evaluation", function() {
+        var sanitizer = sinon.stub().returnsArg(0);
+        ktl("{{ v1 }}{{ v2 }}{{ v3 }}")({v1:1,v2:2,v3:3}, undefined, sanitizer);
+        sanitizer.should.have.callCount(3);
+    });
+    it("uses sanitizer to sanitize output", function() {
+        var sanitizer = function(s) { return s.toUpperCase() };
+        ktl("{{ v1 }}{{ v2 }}")({v1:'a',v2:'b'}, undefined, sanitizer).should.be.equal('AB');
+    });
+    it("calls sanitizer in nested evaluation", function() {
+        var sanitizer = sinon.stub().returnsArg(0);
+        ktl("{{#array}}{{_}}{{#}}")({array:['a','b','c','d']}, undefined, sanitizer).should.be.equal('abcd');
+        sanitizer.should.have.callCount(4);
+    });
+    it("uses sanitizer in nested evaluation", function() {
+        var sanitizer = function(s) { return s.toUpperCase() };
+        ktl("{{#array}}{{_}}{{#}}")({array:['a','b','c','d']}, undefined, sanitizer).should.be.equal('ABCD');
+    });
+    it("does not call sanitizer if condition is not met", function() {
+        var sanitizer = sinon.stub().returnsArg(0);
+        ktl("{{?bool}}{{val}}{{?}}")({bool:false, val:1}, undefined, sanitizer);
+        sanitizer.should.not.be.called();
+    });
+    it("allow to use property with name 'sanitizer'", function() {
+        var sanitizer = sinon.stub().returnsArg(0);
+        ktl("{{sanitizer}}")({sanitizer:"a test"}, undefined, sanitizer).should.equal("a test");
+        sanitizer.should.be.calledOnce();
+    });
+    it("does not expose sanitizer inside template string", function() {
+        var sanitizer = sinon.stub().returnsArg(0);
+        ktl("{{sanitizer}}{{a}}")({a:1}, undefined, sanitizer).should.equal("1");
+        sanitizer.should.be.calledOnce();
+    });
+    it("allow to use sanitizer as 2nd parameter", function() {
+        var sanitizer = sinon.stub().returnsArg(0);
+        ktl("{{ v1 }}{{ v2 }}{{ v3 }}")({v1:1,v2:2,v3:3}, sanitizer);
+        sanitizer.should.have.callCount(3);
+    });
+    
 });
