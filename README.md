@@ -5,6 +5,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/lekoder/ktl/badge.svg?branch=master)](https://coveralls.io/github/lekoder/ktl?branch=master)
 [![npm](https://img.shields.io/npm/v/ktl.svg)](https://www.npmjs.com/package/ktl)
 [![npm](https://img.shields.io/npm/dt/ktl.svg)](https://www.npmjs.com/package/ktl)
+[![npm](https://img.shields.io/npm/l/ktl.svg)](https://www.npmjs.com/package/ktl)
 
 ## KTL is a parser factory.
 
