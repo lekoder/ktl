@@ -10,12 +10,12 @@
   "author": "Mariusz Chwalba <koder@cashbill.pl>",
   "license": "ISC",
   "devDependencies": {
-    "coveralls": "^2.11.6",
-    "istanbul": "^0.4.2",
-    "mocha": "^2.4.5",
-    "should": "^7.1.1",
-    "should-sinon": "0.0.5",
-    "sinon": "^1.17.3"
+    "coveralls": "*",
+    "istanbul": "*",
+    "mocha": "*",
+    "should": "*",
+    "should-sinon": "*",
+    "sinon": "*"
   },
   "directories": {
     "test": "test"
