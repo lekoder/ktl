@@ -20,7 +20,7 @@ var nestingTokens = {
         // build an condition
         var condition = tokens[0].substring(1);
         var elsePos = tokens.indexOf(':');
-        if ( elsePos == -1 ) {
+        if ( elsePos === -1 ) {
             return "(function() { try { if ("+condition+")"+build(tokens.splice(1))+";} catch(e){}; return \"\"  }  )()";
         } else {
             return "(function() { try { if ("+condition+")" + 
@@ -55,7 +55,7 @@ function build(tokens) {
                     do {
                         ahead += 2;
                         if (ahead >= tokens.length) break;
-                        if (tokens[ahead][0] == nestor) {
+                        if (tokens[ahead][0] === nestor) {
 
                             if (tokens[ahead].length === 1) {
                                 depth -= 1;
