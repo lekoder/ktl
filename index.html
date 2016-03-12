@@ -32,26 +32,27 @@
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
         <h1>
-<a id="koders-template-language" class="anchor" href="#koders-template-language" aria-hidden="true"><span class="octicon octicon-link"></span></a>Koder's Template Language</h1>
+<a id="koders-template-language" class="anchor" href="#koders-template-language" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Koder's Template Language</h1>
 
 <h2>
-<a id="what-is-is" class="anchor" href="#what-is-is" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is is</h2>
+<a id="what-is-is" class="anchor" href="#what-is-is" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What is is</h2>
 
 <p>Fast and simple string templating language and parser factory. KTL makes a function from your template. Simply pass a data object and get back your parsed string.</p>
 
-<div class="highlight highlight-source-js"><pre>output <span class="pl-k">=</span> <span class="pl-en">ktl</span>(template)(data);</pre></div>
+<div class="highlight highlight-source-js"><pre>output <span class="pl-k">=</span> <span class="pl-en">ktl</span>(template)(data[,sanitizer]);</pre></div>
 
 <h2>
-<a id="key-features" class="anchor" href="#key-features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Key features</h2>
+<a id="key-features" class="anchor" href="#key-features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Key features</h2>
 
 <ul>
 <li>Fast.</li>
 <li>No dependencies.</li>
 <li>Does not assume what template will be used for.</li>
+<li>You can pass a optional sanitizer to call on all outputs.</li>
 </ul>
 
 <h2>
-<a id="syntax" class="anchor" href="#syntax" aria-hidden="true"><span class="octicon octicon-link"></span></a>Syntax</h2>
+<a id="syntax" class="anchor" href="#syntax" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Syntax</h2>
 
 <pre lang="ktl"><code>{{ property }}
 
